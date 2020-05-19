@@ -17,15 +17,7 @@ public class MainViewActivity extends AppCompatActivity {
     public String getTotalTime() {
         return totalTime;
     }
-    public void setTotalTime(int h, int m) {
-        int newH = getHours() + h;
-        setHours(newH);
-        int newM = getMinutes()+m;
-        if(newM>60) {
-            setHours(getHours()+1);
-            newM = newM-60;
-        }
-        setMinutes(newM);
+    public void setTotalTime() {
         String time = getHours()+ " h "+ getMinutes()+" min";
         totalTime = time;
     }
@@ -44,13 +36,19 @@ public class MainViewActivity extends AppCompatActivity {
     public void setMinutes(int m) {
         if(m<60 && m>=0) {
             minutes = m;
+        }else {
+            int newM = getMinutes()+ m;
+            if(newM>60) {
+                setHours(getHours()+1);
+                setMinutes(getMinutes()-60);
+            }
         }
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTotalTime(getHours(), getMinutes() );
+        setTotalTime();
         setContentView(R.layout.activity_main_view);
         totalTimeText = findViewById(R.id.totalWorkTime);
         totalTimeText.setText("Total working hours: " + getTotalTime());
@@ -66,9 +64,9 @@ public class MainViewActivity extends AppCompatActivity {
         if(requestCode == REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
                 Bundle bundle = data.getExtras();
-                setHours(bundle.getInt("hours"));
-                setMinutes(bundle.getInt("minutes"));
-                setTotalTime(getHours(), getMinutes());
+                setHours(getHours() + bundle.getInt("hours"));
+                setMinutes(getMinutes() + bundle.getInt("minutes"));
+                setTotalTime();
                 totalTimeText.setText("Total work time: " + getTotalTime());
             }
             if (resultCode == RESULT_CANCELED) {
