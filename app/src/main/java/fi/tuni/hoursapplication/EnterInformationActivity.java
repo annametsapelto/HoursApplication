@@ -20,6 +20,7 @@ public class EnterInformationActivity extends AppCompatActivity {
         mText = findViewById(R.id.minutesInput);
         hText = findViewById(R.id.hoursInput);
         Button button = findViewById(R.id.returnButton);
+        Button cancelButton = findViewById(R.id.cancelButton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,6 +38,13 @@ public class EnterInformationActivity extends AppCompatActivity {
                 }
             }
         });
-
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                setResult(RESULT_CANCELED, intent);
+                finish();
+            }
+        });
     }
 }
