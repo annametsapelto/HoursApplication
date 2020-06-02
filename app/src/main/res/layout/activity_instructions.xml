@@ -4,25 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainViewActivity"
+    tools:context=".InstructionsActivity"
     android:orientation="vertical">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Total work time: "
-        android:id="@+id/totalWorkTime"/>
+        android:text="Instructions"
+        android:textSize="30dp"
+        />
     <TextView
-        android:id="@+id/entries"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="These are the instructions for using this app."
         />
-
     <Button
+        android:id="@+id/backButtonInstructions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add"
-        android:onClick="enteringView"
+        android:text="Back"
+        android:onClick="back"
         />
-
 </androidx.appcompat.widget.LinearLayoutCompat>

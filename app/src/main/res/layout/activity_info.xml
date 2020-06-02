@@ -4,25 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainViewActivity"
+    tools:context=".InfoActivity"
     android:orientation="vertical">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Total work time: "
-        android:id="@+id/totalWorkTime"/>
-    <TextView
-        android:id="@+id/entries"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:text="Info"
+        android:textSize="30dp"
         />
-
-    <Button
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add"
-        android:onClick="enteringView"
+        android:text="This app has been made as a part of the mobile programming course at the Tampere University of Applied Sciences Business Information Systems by Anna Metsäpelto."
+        />
+    <Button
+        android:id="@+id/backButtonInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:onClick="back"
         />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

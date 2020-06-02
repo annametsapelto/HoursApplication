@@ -8,12 +8,16 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class MainViewActivity extends AppCompatActivity {
     private int hours;
     private int minutes;
     private String totalTime;
     TextView totalTimeText;
     private static final int REQUEST_CODE = 1;
+    ArrayList<TimeEntry> entries;
+    TextView timeEntriesView;
 
     public String getTotalTime() {
         return totalTime;
@@ -48,7 +52,10 @@ public class MainViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_view);
         totalTimeText = findViewById(R.id.totalWorkTime);
         totalTimeText.setText("Total working hours: " + getTotalTime());
-    }
+        entries = new ArrayList<TimeEntry>();
+        timeEntriesView = findViewById(R.id.entries);
+        }
+
 
     public void enteringView(View v) {
         Log.d("Result", "Going to enter.");
@@ -85,6 +92,7 @@ public class MainViewActivity extends AppCompatActivity {
             setMinutes(m);
             setTotalTime();
             totalTimeText.setText("Total work time: " + getTotalTime());
+            entries.add(new TimeEntry("", h, m));
         }
     }
 
