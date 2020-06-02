@@ -9,8 +9,11 @@ import android.view.View;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-
+/*
+This activity shows the information on one project and its work time
+ */
 public class MainViewActivity extends AppCompatActivity {
+
     private int hours;
     private int minutes;
     private String totalTime;
@@ -44,7 +47,7 @@ public class MainViewActivity extends AppCompatActivity {
             setMinutes(-60);
         }
     }
-
+//This method is called when the activity is created
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,11 +59,27 @@ public class MainViewActivity extends AppCompatActivity {
         timeEntriesView = findViewById(R.id.entries);
         }
 
-
+//This method moves the user to EnterInformationActivity
     public void enteringView(View v) {
         Log.d("Result", "Going to enter.");
         Intent intent = new Intent(this, EnterInformationActivity.class);
         startActivityForResult(intent, REQUEST_CODE);
+    }
+    //This method is called when returning from EnterInformationActivity
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_CODE) {
+            Bundle bundle = data.getExtras();
+            int h = bundle.getInt(("hours"));
+            Log.d("Result", "hours"+h);
+            setHours(h);
+            int m = bundle.getInt("minutes");
+            setMinutes(m);
+            setTotalTime();
+            totalTimeText.setText("Total work time: " + getTotalTime());
+            entries.add(new TimeEntry("", h, m));
+        }
     }
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
@@ -80,20 +99,6 @@ public class MainViewActivity extends AppCompatActivity {
         outState.putInt("hours", hours);
         super.onSaveInstanceState(outState);
     }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == REQUEST_CODE) {
-            Bundle bundle = data.getExtras();
-            int h = bundle.getInt(("hours"));
-            Log.d("Result", "hours"+h);
-            setHours(h);
-            int m = bundle.getInt("minutes");
-            setMinutes(m);
-            setTotalTime();
-            totalTimeText.setText("Total work time: " + getTotalTime());
-            entries.add(new TimeEntry("", h, m));
-        }
-    }
+
 
 }
