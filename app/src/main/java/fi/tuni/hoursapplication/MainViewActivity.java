@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -18,8 +19,7 @@ public class MainViewActivity extends AppCompatActivity {
         return totalTime;
     }
     public void setTotalTime() {
-        String time = getHours()+ " h "+ getMinutes()+" min";
-        totalTime = time;
+        totalTime = getHours()+ " h "+ getMinutes()+" min";
     }
 
     public int getHours() {
@@ -27,21 +27,17 @@ public class MainViewActivity extends AppCompatActivity {
     }
     public void setHours(int h) {
         if(h<20 && h>=0) {
-            hours = h;
+            hours = getHours() + h;
         }
     }
     public int getMinutes() {
         return minutes;
     }
     public void setMinutes(int m) {
-        if(m<60 && m>=0) {
-            minutes = m;
-        }else {
-            int newM = getMinutes()+ m;
-            if(newM>60) {
-                setHours(getHours()+1);
-                setMinutes(getMinutes()-60);
-            }
+        minutes = getMinutes() + m;
+        if(getMinutes()>= 60){
+            setHours(1);
+            setMinutes(-60);
         }
     }
 
@@ -55,23 +51,40 @@ public class MainViewActivity extends AppCompatActivity {
     }
 
     public void enteringView(View v) {
+        Log.d("Result", "Going to enter.");
         Intent intent = new Intent(this, EnterInformationActivity.class);
         startActivityForResult(intent, REQUEST_CODE);
     }
     @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        if(savedInstanceState != null) {
+            int m = savedInstanceState.getInt("minutes");
+            setMinutes(m);
+            int h = savedInstanceState.getInt("hours");
+            setHours(h);
+        }
+        super.onRestoreInstanceState(savedInstanceState);
+    }
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        int minutes = getMinutes();
+        outState.putInt("minutes", minutes);
+        int hours = getHours();
+        outState.putInt("hours", hours);
+        super.onSaveInstanceState(outState);
+    }
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode,resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == REQUEST_CODE) {
-            if (resultCode == RESULT_OK) {
-                Bundle bundle = data.getExtras();
-                setHours(getHours() + bundle.getInt("hours"));
-                setMinutes(getMinutes() + bundle.getInt("minutes"));
-                setTotalTime();
-                totalTimeText.setText("Total work time: " + getTotalTime());
-            }
-            if (resultCode == RESULT_CANCELED) {
-
-            }
+            Bundle bundle = data.getExtras();
+            int h = bundle.getInt(("hours"));
+            Log.d("Result", "hours"+h);
+            setHours(h);
+            int m = bundle.getInt("minutes");
+            setMinutes(m);
+            setTotalTime();
+            totalTimeText.setText("Total work time: " + getTotalTime());
         }
     }
 
