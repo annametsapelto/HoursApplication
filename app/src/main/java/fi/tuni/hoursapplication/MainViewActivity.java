@@ -1,6 +1,7 @@
 package fi.tuni.hoursapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,8 +20,9 @@ public class MainViewActivity extends AppCompatActivity {
     private String totalTime;
     TextView totalTimeText;
     private static final int REQUEST_CODE = 1;
-    ArrayList<TimeEntry> entries;
+    ArrayList<String> entries;
     TextView timeEntriesView;
+    RecyclerView recyclerView;
 
     public String getTotalTime() {
         return totalTime;
@@ -55,7 +57,7 @@ public class MainViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_view);
         totalTimeText = findViewById(R.id.totalWorkTime);
         totalTimeText.setText("Total working hours: " + getTotalTime());
-        entries = new ArrayList<TimeEntry>();
+        entries = new ArrayList<String>();
         timeEntriesView = findViewById(R.id.entries);
         }
 
@@ -78,7 +80,7 @@ public class MainViewActivity extends AppCompatActivity {
             setMinutes(m);
             setTotalTime();
             totalTimeText.setText("Total work time: " + getTotalTime());
-            entries.add(new TimeEntry("", h, m));
+            entries.add(new TimeEntry("", h, m).toString());
         }
     }
     @Override
