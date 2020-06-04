@@ -1,6 +1,7 @@
 package fi.tuni.hoursapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -59,6 +60,9 @@ public class MainViewActivity extends AppCompatActivity {
         totalTimeText.setText("Total working hours: " + getTotalTime());
         entries = new ArrayList<String>();
         timeEntriesView = findViewById(R.id.entries);
+        MyAdapter adapter = new MyAdapter(this, entries);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         }
 
 //This method moves the user to EnterInformationActivity
