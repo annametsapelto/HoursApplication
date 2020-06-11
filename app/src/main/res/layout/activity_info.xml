@@ -5,18 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".InfoActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/lightBlue">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Info"
         android:textSize="30dp"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_margin="10dp"
         />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="This app has been made as a part of the mobile programming course at the Tampere University of Applied Sciences Business Information Systems by Anna Metsäpelto."
+        android:layout_margin="10dp"
+        android:textSize="20dp"
         />
     <Button
         android:id="@+id/backButtonInfo"
@@ -24,6 +29,10 @@
         android:layout_height="wrap_content"
         android:text="Back"
         android:onClick="back"
+        android:layout_margin="10dp"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:background="@drawable/button_border"
+        android:textColor="@color/lightYellow"
         />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

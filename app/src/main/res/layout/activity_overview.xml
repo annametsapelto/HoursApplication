@@ -5,12 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Overview"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/lightBlue">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="All the Projects"
         android:textSize="30dp"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_margin="10dp"
         />
     <Button
         android:id="@+id/backButtonInstructions"
@@ -18,6 +21,9 @@
         android:layout_height="wrap_content"
         android:text="Back"
         android:onClick="back"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:textColor="@color/lightYellow"
+        android:background="@drawable/button_border"
         />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

@@ -4,19 +4,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".EnterInformationActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/lightBlue">
     <Button
         android:id="@+id/date_picker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Choose a Date"
         android:onClick="pickADate"
+        android:layout_margin="5dp"
+        android:textColor="@color/lightYellow"
+        android:background="@drawable/button_border"
         />
     <TextView
         android:id="@+id/picked_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Chosen date: "
+        android:textSize="20dp"
+        android:layout_margin="5dp"
         />
 
 
@@ -24,6 +30,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Enter hours: "
+        android:textSize="20dp"
+        android:layout_margin="5dp"
         />
     <EditText
         android:layout_width="match_parent"
@@ -35,6 +43,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Enter minutes: "
+        android:textSize="20dp"
+        android:layout_margin="5dp"
         />
     <EditText
         android:layout_width="match_parent"
@@ -48,6 +58,9 @@
         android:layout_height="wrap_content"
         android:text="Submit"
         android:onClick="submit"
+        android:layout_margin="5dp"
+        android:textColor="@color/lightYellow"
+        android:background="@drawable/button_border"
         />
     <Button
         android:id="@+id/cancelButton"
@@ -55,6 +68,9 @@
         android:layout_width="wrap_content"
         android:text="Cancel"
         android:onClick="cancel"
+        android:layout_margin="5dp"
+        android:textColor="@color/lightYellow"
+        android:background="@drawable/button_border"
         />
 
 

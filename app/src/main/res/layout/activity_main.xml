@@ -3,10 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity"
     android:orientation="vertical"
     android:layout_gravity="center"
-    android:background="@color/lightBlue">
+    android:background="@color/lightBlue"
+>
 
     <TextView
         android:layout_width="wrap_content"
@@ -28,7 +30,8 @@
         android:layout_height="wrap_content"
         android:text="Continue Current Project"
         android:onClick="toMainView"
-        android:background="@color/lightYellow"
+        android:background="@drawable/button_border"
+        android:textColor="@color/lightYellow"
         android:layout_margin="5dp"
         android:layout_gravity="center_vertical|center_horizontal"
         />
@@ -37,7 +40,8 @@
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:text="Choose Another Project"
-        android:background="@color/lightYellow"
+        android:background="@drawable/button_border"
+        android:textColor="@color/lightYellow"
         android:layout_margin="5dp"
         android:layout_gravity="center_vertical|center_horizontal"
         />
@@ -46,7 +50,8 @@
         android:layout_height="wrap_content"
         android:text="View All Projects"
         android:onClick="toProjectsOverview"
-        android:background="@color/lightYellow"
+        android:background="@drawable/button_border"
+        android:textColor="@color/lightYellow"
         android:layout_margin="5dp"
         android:layout_gravity="center_vertical|center_horizontal"
         />
@@ -56,7 +61,8 @@
         android:layout_height="wrap_content"
         android:text="Instructions"
         android:onClick="toInstructions"
-        android:background="@color/lightYellow"
+        android:background="@drawable/button_border"
+        android:textColor="@color/lightYellow"
         android:layout_margin="5dp"
         android:layout_gravity="center_vertical|center_horizontal"
         />
@@ -66,7 +72,8 @@
         android:layout_height="wrap_content"
         android:text="Info"
         android:onClick="toInfo"
-        android:background="@color/lightYellow"
+        android:background="@drawable/button_border"
+        android:textColor="@color/lightYellow"
         android:layout_margin="5dp"
         android:layout_gravity="center_vertical|center_horizontal"
         />
