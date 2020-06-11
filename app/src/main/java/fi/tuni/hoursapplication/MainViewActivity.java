@@ -77,13 +77,13 @@ public class MainViewActivity extends AppCompatActivity {
         if(requestCode == REQUEST_CODE) {
             Bundle bundle = data.getExtras();
             int h = bundle.getInt(("hours"));
-            Log.d("Result", "hours"+h);
             setHours(h);
             int m = bundle.getInt("minutes");
+            String date = bundle.getString("date");
             setMinutes(m);
             setTotalTime();
             totalTimeText.setText("Total work time: " + getTotalTime());
-            entries.add(new TimeEntry("", h, m).toString());
+            entries.add(new TimeEntry(date, h, m).toString());
         }
     }
     @Override

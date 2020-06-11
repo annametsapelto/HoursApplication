@@ -5,12 +5,20 @@
     android:layout_height="match_parent"
     tools:context=".EnterInformationActivity"
     android:orientation="vertical">
-
-    <TextView
+    <Button
+        android:id="@+id/date_picker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Choose the date: "
+        android:text="Choose a Date"
+        android:onClick="pickADate"
         />
+    <TextView
+        android:id="@+id/picked_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chosen date: "
+        />
+
 
     <TextView
         android:layout_width="wrap_content"
