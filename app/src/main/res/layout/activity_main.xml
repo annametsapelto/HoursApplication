@@ -1,50 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="vertical"
-    android:layout_gravity="center">
+    android:layout_gravity="center"
+    android:background="@color/lightBlue">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Welcome to MyHours!"
-        android:textSize="30dp"/>
+        android:textSize="30dp"
+        android:padding="10dp"
+        android:layout_gravity="center_vertical|center_horizontal"
+        />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/hourglass"
+        android:layout_gravity="center_vertical|center_horizontal"
+        />
     <Button
         android:id="@+id/currentProjectButton"
-        android:layout_width="wrap_content"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:text="Continue Current Project"
         android:onClick="toMainView"
+        android:background="@color/lightYellow"
+        android:layout_margin="5dp"
+        android:layout_gravity="center_vertical|center_horizontal"
         />
     <Button
         android:id="@+id/chooseProjectButton"
-        android:layout_width="wrap_content"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:text="Choose Another Project"
+        android:background="@color/lightYellow"
+        android:layout_margin="5dp"
+        android:layout_gravity="center_vertical|center_horizontal"
         />
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:text="View All Projects"
         android:onClick="toProjectsOverview"
+        android:background="@color/lightYellow"
+        android:layout_margin="5dp"
+        android:layout_gravity="center_vertical|center_horizontal"
         />
     <Button
         android:id="@+id/instructionsButton"
-        android:layout_width="wrap_content"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:text="Instructions"
         android:onClick="toInstructions"
+        android:background="@color/lightYellow"
+        android:layout_margin="5dp"
+        android:layout_gravity="center_vertical|center_horizontal"
         />
     <Button
         android:id="@+id/infoButton"
-        android:layout_width="wrap_content"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:text="Info"
         android:onClick="toInfo"
+        android:background="@color/lightYellow"
+        android:layout_margin="5dp"
+        android:layout_gravity="center_vertical|center_horizontal"
         />
 
 </LinearLayout>
