@@ -22,7 +22,6 @@ public class MainViewActivity extends AppCompatActivity {
     TextView totalTimeText;
     private static final int REQUEST_CODE = 1;
     ArrayList<String> entries;
-    TextView timeEntriesView;
     RecyclerView recyclerView;
 
     public String getTotalTime() {
@@ -58,16 +57,16 @@ public class MainViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_view);
         totalTimeText = findViewById(R.id.totalWorkTime);
         totalTimeText.setText("Total working hours: " + getTotalTime());
-        entries = new ArrayList<String>();
-        timeEntriesView = findViewById(R.id.entries);
+        entries = new ArrayList<>();
         MyAdapter adapter = new MyAdapter(this, entries);
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         }
 
 //This method moves the user to EnterInformationActivity
     public void enteringView(View v) {
-        Log.d("Result", "Going to enter.");
         Intent intent = new Intent(this, EnterInformationActivity.class);
         startActivityForResult(intent, REQUEST_CODE);
     }

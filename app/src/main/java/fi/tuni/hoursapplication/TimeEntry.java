@@ -14,7 +14,7 @@ public class TimeEntry {
         setMinutes(minutes);
     }
     public String toString() {
-        String entry = date + hours + " h " + minutes + " m";
+        String entry = date + " " + hours + " h " + minutes + " m";
         return entry;
     }
     public void setDate(String d) {
