@@ -13,7 +13,7 @@
         android:text="Choose a Date"
         android:onClick="pickADate"
         android:layout_margin="5dp"
-        android:textColor="@color/lightYellow"
+        android:textColor="@color/darkBlue"
         android:background="@drawable/button_border"
         />
     <TextView
@@ -59,7 +59,7 @@
         android:text="Submit"
         android:onClick="submit"
         android:layout_margin="5dp"
-        android:textColor="@color/lightYellow"
+        android:textColor="@color/darkBlue"
         android:background="@drawable/button_border"
         />
     <Button
@@ -69,7 +69,7 @@
         android:text="Cancel"
         android:onClick="cancel"
         android:layout_margin="5dp"
-        android:textColor="@color/lightYellow"
+        android:textColor="@color/darkBlue"
         android:background="@drawable/button_border"
         />
 

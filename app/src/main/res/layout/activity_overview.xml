@@ -22,7 +22,7 @@
         android:text="Back"
         android:onClick="back"
         android:layout_gravity="center_vertical|center_horizontal"
-        android:textColor="@color/lightYellow"
+        android:textColor="@color/darkBlue"
         android:background="@drawable/button_border"
         />
 

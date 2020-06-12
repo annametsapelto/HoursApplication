@@ -8,5 +8,6 @@
     android:layout_height="wrap_content"
     android:text="There are no entries."
     android:textSize="24dp"
+    android:layout_margin="10dp"
     />
 </LinearLayout>

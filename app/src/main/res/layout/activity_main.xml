@@ -16,6 +16,7 @@
         android:text="Welcome to MyHours!"
         android:textSize="30dp"
         android:padding="10dp"
+        android:textColor="@color/darkBlue"
         android:layout_gravity="center_vertical|center_horizontal"
         />
     <ImageView
@@ -31,7 +32,7 @@
         android:text="Continue Current Project"
         android:onClick="toMainView"
         android:background="@drawable/button_border"
-        android:textColor="@color/lightYellow"
+        android:textColor="@color/darkBlue"
         android:layout_margin="5dp"
         android:layout_gravity="center_vertical|center_horizontal"
         />
@@ -41,7 +42,7 @@
         android:layout_height="wrap_content"
         android:text="Choose Another Project"
         android:background="@drawable/button_border"
-        android:textColor="@color/lightYellow"
+        android:textColor="@color/darkBlue"
         android:layout_margin="5dp"
         android:layout_gravity="center_vertical|center_horizontal"
         />
@@ -51,7 +52,7 @@
         android:text="View All Projects"
         android:onClick="toProjectsOverview"
         android:background="@drawable/button_border"
-        android:textColor="@color/lightYellow"
+        android:textColor="@color/darkBlue"
         android:layout_margin="5dp"
         android:layout_gravity="center_vertical|center_horizontal"
         />
@@ -62,7 +63,7 @@
         android:text="Instructions"
         android:onClick="toInstructions"
         android:background="@drawable/button_border"
-        android:textColor="@color/lightYellow"
+        android:textColor="@color/darkBlue"
         android:layout_margin="5dp"
         android:layout_gravity="center_vertical|center_horizontal"
         />
@@ -73,7 +74,7 @@
         android:text="Info"
         android:onClick="toInfo"
         android:background="@drawable/button_border"
-        android:textColor="@color/lightYellow"
+        android:textColor="@color/darkBlue"
         android:layout_margin="5dp"
         android:layout_gravity="center_vertical|center_horizontal"
         />

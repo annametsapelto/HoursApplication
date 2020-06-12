@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:text="Add"
         android:onClick="enteringView"
-        android:textColor="@color/lightYellow"
+        android:textColor="@color/darkBlue"
         android:background="@drawable/button_border"
         android:layout_margin="5dp"
     />
