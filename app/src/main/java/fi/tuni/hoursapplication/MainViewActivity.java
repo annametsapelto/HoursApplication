@@ -8,13 +8,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import static fi.tuni.hoursapplication.R.drawable.button_border;
+
 /*
 This activity shows the information on one project and its work time
  */
-public class MainViewActivity extends AppCompatActivity {
+public class MainViewActivity extends AppCompatActivity implements MyAdapter.OnNoteListener {
 
     private int hours;
     private int minutes;
@@ -58,7 +62,7 @@ public class MainViewActivity extends AppCompatActivity {
         totalTimeText = findViewById(R.id.totalWorkTime);
         totalTimeText.setText("Total working hours: " + getTotalTime());
         entries = new ArrayList<>();
-        MyAdapter adapter = new MyAdapter(this, entries);
+        MyAdapter adapter = new MyAdapter(this, entries, this);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
@@ -106,4 +110,20 @@ public class MainViewActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onNoteClick(final int position) {
+        Log.d("debug", "onNoteClick");
+        Button deleteButton = new Button(this);
+        deleteButton.setText("Delete entry");
+        deleteButton.setTextColor((int) 00004D);
+        deleteButton.setBackground(this.getDrawable(button_border));
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                entries.remove(position);
+            }
+        });
+
+    }
 }

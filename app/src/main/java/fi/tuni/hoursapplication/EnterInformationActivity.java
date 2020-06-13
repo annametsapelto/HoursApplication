@@ -70,6 +70,6 @@ public class EnterInformationActivity extends AppCompatActivity implements DateP
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         date = month+1 +"/"+ dayOfMonth + "/" + year;
         pickedDate = findViewById(R.id.picked_date);
-        pickedDate.setText(date);
+        pickedDate.setText("Chosen date: " + date);
     }
 }

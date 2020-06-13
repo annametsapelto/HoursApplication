@@ -15,24 +15,41 @@ import java.util.ArrayList;
 public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private ArrayList<String> entryList;
     Context context;
+    private OnNoteListener myOnNoteListener;
     private static final int EMPTY_VIEW = 10;
+
+    public MyAdapter(Context c, ArrayList<String> entries, OnNoteListener myOnNoteListener) {
+        context = c;
+        entryList = entries;
+        this.myOnNoteListener = myOnNoteListener;
+
+    }
 
     public class EmptyViewHolder extends RecyclerView.ViewHolder {
         public EmptyViewHolder(View itemView) {
             super(itemView);
         }
     }
-    public MyAdapter(Context c, ArrayList<String> entries) {
-        context = c;
-        entryList = entries;
-    }
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView entry;
+        OnNoteListener onNoteListener;
 
-        public MyViewHolder(@NonNull View itemView) {
+        public MyViewHolder(@NonNull View itemView, OnNoteListener onNoteListener) {
             super(itemView);
             entry = itemView.findViewById(R.id.entryRow);
+            itemView.setOnClickListener(this);
+            this.onNoteListener = onNoteListener;
+
         }
+
+        @Override
+        public void onClick(View v) {
+            onNoteListener.onNoteClick(getAdapterPosition());
+        }
+    }
+    public interface OnNoteListener {
+        public void onNoteClick(int position);
+
     }
 
 
@@ -49,7 +66,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.entry_row, parent, false);
             RecyclerView.ViewHolder vh;
-            vh = new MyViewHolder(view);
+            vh = new MyViewHolder(view, myOnNoteListener);
             return vh;
         }
     }
