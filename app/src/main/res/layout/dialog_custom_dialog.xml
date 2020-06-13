@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightBlue">
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal|center_vertical"
+    android:id="@+id/dialog_title"
+    android:text="Do you want to modify or delete this entry?"
+    android:textSize="20dp"
+    android:textColor="@color/darkBlue"
+    android:layout_margin="10dp"
+    />
+    <Button
+        android:id="@+id/dialog_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:background="@drawable/button_border"
+        android:layout_margin="10dp"
+        android:text="Delete"
+        android:textColor="@color/darkBlue"
+        />
+    <Button
+        android:id="@+id/dialog_modify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:background="@drawable/button_border"
+        android:layout_margin="10dp"
+        android:text="Modify"
+        android:textColor="@color/darkBlue"
+        />
+    <Button
+        android:id="@+id/dialog_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:background="@drawable/button_border"
+        android:layout_margin="10dp"
+        android:text="Cancel"
+        android:textColor="@color/darkBlue"
+        />
+</LinearLayout>

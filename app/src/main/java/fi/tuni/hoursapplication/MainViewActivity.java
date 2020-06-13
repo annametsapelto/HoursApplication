@@ -1,6 +1,7 @@
 package fi.tuni.hoursapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -112,18 +113,24 @@ public class MainViewActivity extends AppCompatActivity implements MyAdapter.OnN
 
     @Override
     public void onNoteClick(final int position) {
-        Log.d("debug", "onNoteClick");
-        Button deleteButton = new Button(this);
-        deleteButton.setText("Delete entry");
-        deleteButton.setTextColor((int) 00004D);
-        deleteButton.setBackground(this.getDrawable(button_border));
-        deleteButton.setOnClickListener(new View.OnClickListener() {
+        FragmentManager manager = getSupportFragmentManager();
+        Bundle bundle = new Bundle();
+        bundle.putInt("position", position);
+        bundle.putStringArrayList("EntryList", entries);
+        EntryDialog entryDialog = new EntryDialog(bundle);
+        entryDialog.show(manager, "Edit entry");
+    }
+
+    public void openDialog() {
+
+
+ /*       deleteButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 entries.remove(position);
             }
-        });
+        });*/
 
     }
 }
