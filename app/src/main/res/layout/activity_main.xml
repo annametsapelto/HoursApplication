@@ -29,7 +29,7 @@
         android:id="@+id/currentProjectButton"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:text="Continue Current Project"
+        android:text="No chosen project"
         android:onClick="toMainView"
         android:background="@drawable/button_border"
         android:textColor="@color/darkBlue"
@@ -37,14 +37,15 @@
         android:layout_gravity="center_vertical|center_horizontal"
         />
     <Button
-        android:id="@+id/chooseProjectButton"
+        android:id="@+id/createProjectButton"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:text="Choose Another Project"
+        android:text="Create A New Project"
         android:background="@drawable/button_border"
         android:textColor="@color/darkBlue"
         android:layout_margin="5dp"
         android:layout_gravity="center_vertical|center_horizontal"
+        android:onClick="openCreateDialog"
         />
     <Button
         android:layout_width="220dp"

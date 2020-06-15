@@ -8,6 +8,15 @@
     android:background="@color/lightBlue">
 
     <TextView
+        android:id="@+id/project_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24dp"
+        android:textColor="@color/darkBlue"
+        android:layout_margin="10dp"
+        />
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Total work time: "
@@ -30,6 +39,17 @@
         android:scrollbars="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:layout_gravity="bottom|center_horizontal|center_vertical"
+        android:layout_margin="10dp"
+        android:background="@drawable/button_border"
+        android:textColor="@color/darkBlue"
+        android:onClick="save"
+        />
 
 
 

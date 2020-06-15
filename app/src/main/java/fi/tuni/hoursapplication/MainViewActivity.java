@@ -24,7 +24,7 @@ public class MainViewActivity extends AppCompatActivity implements MyAdapter.OnN
     private int hours;
     private int minutes;
     private String totalTime;
-    TextView totalTimeText;
+    TextView totalTimeText, projectName;
     private static final int REQUEST_CODE = 1;
     ArrayList<String> entries;
     RecyclerView recyclerView;
@@ -60,6 +60,9 @@ public class MainViewActivity extends AppCompatActivity implements MyAdapter.OnN
         super.onCreate(savedInstanceState);
         setTotalTime();
         setContentView(R.layout.activity_main_view);
+        String name = getIntent().getStringExtra("projectName");
+        projectName = findViewById(R.id.project_name);
+        projectName.setText(name);
         totalTimeText = findViewById(R.id.totalWorkTime);
         totalTimeText.setText("Total working hours: " + getTotalTime());
         entries = new ArrayList<>();
@@ -126,5 +129,8 @@ public class MainViewActivity extends AppCompatActivity implements MyAdapter.OnN
     public void sendInput(int position, String date, int hours, int minutes) {
         String modified = new TimeEntry(date, hours, minutes).toString();
         entries.set(position, modified);
+    }
+    public void save(View v) {
+
     }
 }

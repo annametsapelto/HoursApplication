@@ -75,6 +75,7 @@ public class ModifyDialog extends DialogFragment implements DatePickerDialog.OnD
                 Toast.makeText(getActivity(), "Enter valid hours and minutes.", Toast.LENGTH_SHORT).show();
             } else {
                 listener.sendInput(position, date, h, m);
+                getDialog().dismiss();
             }
 
         }
