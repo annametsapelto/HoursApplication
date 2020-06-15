@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="300dp"
     android:layout_height="match_parent"
     tools:context=".EnterInformationActivity"
     android:orientation="vertical"
@@ -9,24 +9,23 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Make a new entry"
+        android:text="Modify your entry"
         android:textColor="@color/darkBlue"
-        android:textSize="32dp"
+        android:textSize="24dp"
         android:layout_gravity="center_horizontal|center_vertical"
         android:layout_margin="10dp"
         />
     <Button
-        android:id="@+id/date_picker"
+        android:id="@+id/date_picker2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Choose a Date"
-        android:onClick="pickADate"
         android:layout_margin="5dp"
         android:textColor="@color/darkBlue"
         android:background="@drawable/button_border"
         />
     <TextView
-        android:id="@+id/picked_date"
+        android:id="@+id/old_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Chosen date: "
@@ -45,7 +44,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/hoursInput"
+        android:id="@+id/hoursInput2"
         android:inputType="number"
         />
     <TextView
@@ -58,25 +57,23 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/minutesInput"
+        android:id="@+id/minutesInput2"
         android:inputType="number"
         />
     <Button
-        android:id="@+id/returnButton"
+        android:id="@+id/submitButton2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Submit"
-        android:onClick="submit"
         android:layout_margin="5dp"
         android:textColor="@color/darkBlue"
         android:background="@drawable/button_border"
         />
     <Button
-        android:id="@+id/cancelButton"
+        android:id="@+id/cancelButton2"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:text="Cancel"
-        android:onClick="cancel"
         android:layout_margin="5dp"
         android:textColor="@color/darkBlue"
         android:background="@drawable/button_border"

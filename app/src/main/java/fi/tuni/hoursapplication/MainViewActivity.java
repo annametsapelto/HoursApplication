@@ -19,7 +19,7 @@ import static fi.tuni.hoursapplication.R.drawable.button_border;
 /*
 This activity shows the information on one project and its work time
  */
-public class MainViewActivity extends AppCompatActivity implements MyAdapter.OnNoteListener {
+public class MainViewActivity extends AppCompatActivity implements MyAdapter.OnNoteListener, ModifyDialog.MyOnInputListener {
 
     private int hours;
     private int minutes;
@@ -119,18 +119,12 @@ public class MainViewActivity extends AppCompatActivity implements MyAdapter.OnN
         bundle.putStringArrayList("EntryList", entries);
         EntryDialog entryDialog = new EntryDialog(bundle);
         entryDialog.show(manager, "Edit entry");
+
     }
 
-    public void openDialog() {
-
-
- /*       deleteButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                entries.remove(position);
-            }
-        });*/
-
+    @Override
+    public void sendInput(int position, String date, int hours, int minutes) {
+        String modified = new TimeEntry(date, hours, minutes).toString();
+        entries.set(position, modified);
     }
 }

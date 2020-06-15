@@ -1,6 +1,5 @@
 package fi.tuni.hoursapplication;
 
-import android.app.Dialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentManager;
 
 import java.util.ArrayList;
 
@@ -18,7 +18,6 @@ public class EntryDialog extends DialogFragment {
 
     public EntryDialog(Bundle bundle) {
         position = bundle.getInt("position");
-        entries = bundle.getStringArrayList("entries");
     }
 
     @Override
@@ -35,11 +34,15 @@ public class EntryDialog extends DialogFragment {
                 entries.remove(position);
             }
         });
-        
+
         //Opens a new activity for modifying the entries list.
         modifyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                FragmentManager manager = getFragmentManager();
+                ModifyDialog mDialog = new ModifyDialog(position);
+                mDialog.show(manager, "Modify");
+                getDialog().dismiss();
 
             }
         });

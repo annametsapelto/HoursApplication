@@ -31,15 +31,18 @@ public class EnterInformationActivity extends AppCompatActivity implements DateP
     public void submit(View v) {
         mText = findViewById(R.id.minutesInput);
         hText = findViewById(R.id.hoursInput);
+
         //If the user hasn't entered information, a toast is shown
         if (date==null || hText.getText().toString().equals("") || mText.getText().toString().equals("")) {
             Toast.makeText(EnterInformationActivity.this, "Enter hours and minutes.", Toast.LENGTH_SHORT).show();
+
         //If the user has entered information, it will be converted to integers and validated
         } else {
             int h = Integer.parseInt(hText.getText().toString());
             int m = Integer.parseInt(mText.getText().toString());
             if (h<0 || h>20 || m<0 || m>59) {
                 Toast.makeText(EnterInformationActivity.this, "Enter valid hours and minutes.", Toast.LENGTH_SHORT).show();
+
         //If the numbers are possible, they are passed to the previous activity and this one closed.
             } else {
                 Intent intent = new Intent();
@@ -57,6 +60,7 @@ public class EnterInformationActivity extends AppCompatActivity implements DateP
         setResult(RESULT_CANCELED, intent);
         finish();
     }
+
     //This method opens the DatePickerDialog when a button has been pressed.
     public void pickADate(View v) {
         DatePickerDialog dialog = new DatePickerDialog(this, this,
