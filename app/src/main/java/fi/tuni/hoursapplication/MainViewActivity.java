@@ -6,12 +6,18 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import static fi.tuni.hoursapplication.R.drawable.button_border;
@@ -58,6 +64,7 @@ public class MainViewActivity extends AppCompatActivity implements MyAdapter.OnN
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        load();
         setTotalTime();
         setContentView(R.layout.activity_main_view);
         String name = getIntent().getStringExtra("projectName");
@@ -65,7 +72,6 @@ public class MainViewActivity extends AppCompatActivity implements MyAdapter.OnN
         projectName.setText(name);
         totalTimeText = findViewById(R.id.totalWorkTime);
         totalTimeText.setText("Total working hours: " + getTotalTime());
-        entries = new ArrayList<>();
         MyAdapter adapter = new MyAdapter(this, entries, this);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
@@ -131,6 +137,28 @@ public class MainViewActivity extends AppCompatActivity implements MyAdapter.OnN
         entries.set(position, modified);
     }
     public void save(View v) {
-
+        SharedPreferences sharedPreferences = getSharedPreferences("PREFS", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+        String entryString = gson.toJson(entries);
+        editor.putString("entries", entryString);
+        editor.putInt("hours", getHours());
+        editor.putInt("minutes", getMinutes());
+        editor.commit();
+        Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show();
+    }
+    public void load() {
+        SharedPreferences sharedPreferences = getSharedPreferences("PREFS", MODE_PRIVATE);
+        Gson gson = new Gson();
+        int savedHours = sharedPreferences.getInt("hours", 0);
+        int savedMinutes = sharedPreferences.getInt("minutes", 0);
+        setHours(savedHours);
+        setMinutes(savedMinutes);
+        String entryString = sharedPreferences.getString("entries", null);
+        Type type = new TypeToken<ArrayList<String>>() {}.getType();
+        entries = gson.fromJson(entryString, type);
+        if (entries == null) {
+            entries = new ArrayList<String>();
+        }
     }
 }
