@@ -11,7 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-
+/**
+ * This class in the adapter for RecyclerView
+ */
 public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private ArrayList<String> entryList;
     Context context;
@@ -22,14 +24,20 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         context = c;
         entryList = entries;
         this.myOnNoteListener = myOnNoteListener;
-
     }
 
+    /**
+     * This class is an empty view
+     */
     public class EmptyViewHolder extends RecyclerView.ViewHolder {
         public EmptyViewHolder(View itemView) {
             super(itemView);
         }
     }
+
+    /**
+     * This inner class is the view holder.
+     */
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView entry;
         OnNoteListener onNoteListener;
@@ -41,18 +49,24 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             this.onNoteListener = onNoteListener;
 
         }
-
+        //This method gets the position of the clicked entry.
         @Override
         public void onClick(View v) {
             onNoteListener.onNoteClick(getAdapterPosition());
         }
     }
+    //This interface helps getting the position of a clicked item.
     public interface OnNoteListener {
-        public void onNoteClick(int position);
+        void onNoteClick(int position);
 
     }
 
-
+    /**
+     * This method is called when the ViewHolder is created. It returns either an empty view or a TextView.
+     * @param parent
+     * @param viewType
+     * @return
+     */
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -71,6 +85,11 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
     }
 
+    /**
+     * This method binds the entries to the holder.
+     * @param holder
+     * @param position
+     */
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof MyViewHolder) {
@@ -78,6 +97,11 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
     }
 
+    /**
+     * This method tells if the view is empty or not.
+     * @param position
+     * @return
+     */
     @Override
     public int getItemViewType(int position) {
 
@@ -87,6 +111,10 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     return super.getItemViewType(position);
 }
 
+    /**
+     * This method returns the size of the array list.
+     * @return
+     */
     @Override
     public int getItemCount() {
         return entryList.size() > 0 ? entryList.size() : 1;

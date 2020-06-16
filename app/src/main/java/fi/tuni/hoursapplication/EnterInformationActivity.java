@@ -14,21 +14,38 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Calendar;
-//In this activity the user chooses the date and work time for that day and passes the information back to the previous activity.
+/**In this activity the user chooses the date and work time for that day and passes the information back to MainViewActivity.
+ *
+ */
+
 public class EnterInformationActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+
+    //Variables
+    String date;
+
+    //Widgets
     EditText hText;
     EditText mText;
-    String date;
     TextView pickedDate;
 
+    /**
+     * This method is called when the activity starts.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_information);
 
     }
-    //This method is called when the user presses a button.
+
+    /**
+     * This method is called when the user presses a button.
+     * It will give the information back to MainViewActivity and close this activity.
+     * @param v
+     */
     public void submit(View v) {
+        //Find the TextViews
         mText = findViewById(R.id.minutesInput);
         hText = findViewById(R.id.hoursInput);
 
@@ -54,14 +71,22 @@ public class EnterInformationActivity extends AppCompatActivity implements DateP
             }
         }
     }
-    //This method returns to the previous activity when a button is pressed and nothing has been chosen.
+
+    /**
+     * This method returns to the previous activity when a button is pressed and nothing has been chosen.
+     * @param v
+     */
     public void cancel(View v) {
         Intent intent = new Intent();
         setResult(RESULT_CANCELED, intent);
         finish();
     }
 
-    //This method opens the DatePickerDialog when a button has been pressed.
+    /**
+     * This method opens the DatePickerDialog when a button has been pressed.
+     * @param v
+     */
+
     public void pickADate(View v) {
         DatePickerDialog dialog = new DatePickerDialog(this, this,
                 Calendar.getInstance().get(Calendar.YEAR),
@@ -69,7 +94,14 @@ public class EnterInformationActivity extends AppCompatActivity implements DateP
                 Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
         dialog.show();
     }
-//This method formats the chosen date and sets it to the screen
+
+    /**
+     * This method gets the picked date and formats is.
+     * @param view
+     * @param year
+     * @param month
+     * @param dayOfMonth
+     */
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         date = month+1 +"/"+ dayOfMonth + "/" + year;

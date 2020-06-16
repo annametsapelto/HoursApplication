@@ -17,6 +17,9 @@ import androidx.fragment.app.DialogFragment;
 
 import java.util.Calendar;
 
+/**
+ * This dialog should be used for modifying an entry but it doesn't work.
+ */
 public class ModifyDialog extends DialogFragment implements DatePickerDialog.OnDateSetListener {
     Button pickerButton, submitButton, cancelButton;
     EditText hoursInput, minutesInput;

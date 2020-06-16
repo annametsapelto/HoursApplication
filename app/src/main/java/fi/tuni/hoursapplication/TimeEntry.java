@@ -1,6 +1,6 @@
 package fi.tuni.hoursapplication;
 
-/* This class contains TimeEntry which consists of String date, int hours and int minutes
+/** This class contains TimeEntry which consists of String date, int hours and int minutes
 
  */
 public class TimeEntry {
