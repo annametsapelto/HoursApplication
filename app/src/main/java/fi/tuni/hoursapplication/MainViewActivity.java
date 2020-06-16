@@ -25,7 +25,7 @@ import static fi.tuni.hoursapplication.R.drawable.button_border;
 /*
 This activity shows the information on one project and its work time
  */
-public class MainViewActivity extends AppCompatActivity implements MyAdapter.OnNoteListener, ModifyDialog.MyOnInputListener {
+public class MainViewActivity extends AppCompatActivity implements MyAdapter.OnNoteListener, ModifyDialog.MyOnInputListener, EntryDialog.PositionListener {
 
     private int hours;
     private int minutes;
@@ -34,6 +34,8 @@ public class MainViewActivity extends AppCompatActivity implements MyAdapter.OnN
     private static final int REQUEST_CODE = 1;
     ArrayList<String> entries;
     RecyclerView recyclerView;
+    int position;
+    MyAdapter adapter;
 
     public String getTotalTime() {
         return totalTime;
@@ -72,7 +74,7 @@ public class MainViewActivity extends AppCompatActivity implements MyAdapter.OnN
         projectName.setText(name);
         totalTimeText = findViewById(R.id.totalWorkTime);
         totalTimeText.setText("Total working hours: " + getTotalTime());
-        MyAdapter adapter = new MyAdapter(this, entries, this);
+        adapter = new MyAdapter(this, entries, this);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
@@ -119,7 +121,7 @@ public class MainViewActivity extends AppCompatActivity implements MyAdapter.OnN
         super.onSaveInstanceState(outState);
     }
 
-
+    //This method shows an EntryDialog when an item on the RecyclerView is clicked.
     @Override
     public void onNoteClick(final int position) {
         FragmentManager manager = getSupportFragmentManager();
@@ -160,5 +162,17 @@ public class MainViewActivity extends AppCompatActivity implements MyAdapter.OnN
         if (entries == null) {
             entries = new ArrayList<String>();
         }
+    }
+
+    @Override
+    public void getPosition(int position) {
+        this.position = position;
+        deletePosition(position);
+    }
+
+    private void deletePosition(int position) {
+        Log.d("debug", "removing"+position);
+        entries.remove(position);
+        adapter.notifyItemRemoved(position);
     }
 }

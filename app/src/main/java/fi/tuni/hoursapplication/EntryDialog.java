@@ -1,5 +1,6 @@
 package fi.tuni.hoursapplication;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +15,11 @@ import java.util.ArrayList;
 public class EntryDialog extends DialogFragment {
     private Button deleteButton, modifyButton, cancelButton;
     private int position;
-    private ArrayList<String> entries;
+    public PositionListener positionListener;
+
+    public interface PositionListener {
+        void getPosition(int position);
+    }
 
     public EntryDialog(Bundle bundle) {
         position = bundle.getInt("position");
@@ -31,7 +36,9 @@ public class EntryDialog extends DialogFragment {
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                entries.remove(position);
+                int toBeRemoved = position;
+                positionListener.getPosition(toBeRemoved);
+                getDialog().dismiss();
             }
         });
 
@@ -55,5 +62,15 @@ public class EntryDialog extends DialogFragment {
             }
         });
         return view;
+    }
+    @Override
+    public void onAttach(Context context) {
+
+        super.onAttach(context);
+        try {
+            positionListener = (PositionListener) getActivity();
+        } catch (ClassCastException e) {
+
+        }
     }
 }
