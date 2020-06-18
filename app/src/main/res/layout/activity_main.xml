@@ -47,16 +47,7 @@
         android:layout_gravity="center_vertical|center_horizontal"
         android:onClick="openCreateDialog"
         />
-    <Button
-        android:layout_width="220dp"
-        android:layout_height="wrap_content"
-        android:text="View All Projects"
-        android:onClick="toProjectsOverview"
-        android:background="@drawable/button_border"
-        android:textColor="@color/darkBlue"
-        android:layout_margin="5dp"
-        android:layout_gravity="center_vertical|center_horizontal"
-        />
+
     <Button
         android:id="@+id/instructionsButton"
         android:layout_width="220dp"
